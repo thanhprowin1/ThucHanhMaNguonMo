@@ -64,20 +64,19 @@
                                 </div>
 
                                 <!-- Action Buttons -->
-                                <div class="btn-group w-100" role="group">
-                                    <a href="/project1/product/addToCart/<?php echo $product->id; ?>"
+                                <div class="btn-group w-100" role="group"> 
+                                    <a href="/project1/product/addToCart<?php echo $product->id; ?>"
                                        class="btn btn-primary btn-sm">
-                                        <i class="bi bi-cart-plus"></i>
+                                        <i class="bi bi-cart-plus"></i> thêm
                                     </a>
-                                    <a href="/project1/Product/edit/<?php echo $product->id; ?>"
-                                       class="btn btn-warning btn-sm">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <a href="/project1/Product/delete/<?php echo $product->id; ?>"
-                                       class="btn btn-danger btn-sm"
-                                       onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
+                                    <?php if (SessionHelper::isAdmin()): ?>
+    <a href="/project1/product/edit/<?php echo $product->id; ?>" class="btn btn-warning btn-sm w-100 fw-bold text-white rounded-pill transition-all hover-btn">
+        <i class="fas fa-edit me-1"></i> Sửa
+    </a>
+    <a href="/project1/product/delete/<?php echo $product->id; ?>" class="btn btn-danger btn-sm w-100 fw-bold rounded-pill transition-all hover-btn delete-btn">
+        <i class="fas fa-trash me-1"></i> Xóa
+    </a>
+<?php endif; ?>
                                 </div>
                             </div>
                         </div>
